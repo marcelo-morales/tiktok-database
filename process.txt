@@ -1,0 +1,7 @@
+TikTok Videos:
+* Download TikTok Trending Videos information as a JSON from https://www.kaggle.com/datasets/erikvdven/tiktok-trending-december-2020.
+* Run python script set_up_videos() to form Video relation and output the data we want to video.txt
+
+User Profiles:
+* Download TikTok profile information as a JSON from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data.
+* Run python set_up_profiles() to form UserProfile relation and output the data we want to userprofile.txt
