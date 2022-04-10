@@ -6,11 +6,13 @@ CREATE TABLE Video (
   PRIMARY KEY(videoId)
 );
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/video-small.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/video.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+LINES TERMINATED BY '\n';
+
+SELECT * FROM Video;
+
 
 CREATE TABLE UserProfile (
   username VARCHAR(255),
@@ -20,7 +22,7 @@ CREATE TABLE UserProfile (
   PRIMARY KEY(username)
 );
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/userprofile-small.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/userprofile.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -33,7 +35,7 @@ CREATE TABLE Song (
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/song-small.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/song.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -45,7 +47,7 @@ CREATE TABLE Artist (
   PRIMARY KEY(artistName)
 );
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/artist-small.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/artist.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -58,22 +60,21 @@ CREATE TABLE Album (
   PRIMARY KEY(albumName, artistName)
 );
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/album-small.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/album.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-CREATE TABLE Revenue (
-  audioId VARCHAR(255),
-  amount DOUBLE
-);
+SELECT * FROM Video;
+SELECT * FROM UserProfile;
+SELECT * FROM Song;
+SELECT * FROM Artist;
+SELECT * FROM Album;
 
-LOAD DATA LOCAL INFILE '/home/lmoral10/tiktok-database/revenue-small.txt'
-INTO TABLE Video
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+
+
+
 
 
 

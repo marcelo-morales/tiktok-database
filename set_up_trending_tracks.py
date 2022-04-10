@@ -20,7 +20,7 @@ def set_up_profiles():
         user = UserProfile(user['id'], user['bio'], user['verified'], current_stats['followers'], current_stats['likes'])
 
         text_file.write(user.username + ', ' + user.userBio + ', ' + str(user.verified) + ', ' + 
-            str(user.followerCount) + ', ' +  str(user.likeNumber) +   '\n\n')
+            str(user.followerCount) + ', ' +  str(user.likeNumber) +   '\n')
 
     # Closing file
     f.close()
@@ -39,7 +39,7 @@ def set_up_videos():
 
         video = TikTokVideo(video['id'], author_info['name'], video['text'], video['commentCount'])
         text_file.write(video.videoId + ', ' + video.username + ', ' + video.caption + ', ' + 
-            str(video.comments) +   '\n\n')
+            str(video.comments) +   '\n')
 
     f.close()
 
@@ -63,7 +63,7 @@ def set_up_music():
         for row in reader:
             current_song = Song(row['id'], row['title'], row['artist'])
             text_file_song.write(str(current_song.audioId) + ', ' + current_song.title + ', ' + current_song.artist + ', ' + 
-                  '\n\n')
+                  '\n')
             
             release_date = row['release_date']
             release_year = release_date[0:4]
@@ -76,6 +76,8 @@ def set_up_music():
         
 def set_up_revenue():
     #a song makes about $0.003 to $0.005 per stream
+    
+
     print('this is revenue')
 
 
