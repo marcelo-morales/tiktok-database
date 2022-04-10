@@ -5,3 +5,8 @@ TikTok Videos:
 User Profiles:
 * Download TikTok profile information as a JSON from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data.
 * Run python set_up_profiles() to form UserProfile relation and output the data we want to userprofile.txt
+
+# Artists, Songs, and Albums
+* Download TikTok music information from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data. Specifically,
+* you want to locate audd_music.csv
+* Run python set_up_music() to form UserProfile relation and output the data we want to userprofile.txt

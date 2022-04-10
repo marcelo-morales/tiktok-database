@@ -1,5 +1,8 @@
 import json
+import csv
 
+
+#cannot download this data set: https://www.kaggle.com/datasets/yamqwe/tiktok-trending-tracks?select=tiktok.csv 
 def set_up_profiles():
     #https://www.kaggle.com/datasets/lykin22/tiktok-trending-data
     f = open('users.json')
@@ -13,14 +16,11 @@ def set_up_profiles():
     text_file = open("userprofile.txt", "w")
     for user in data['user']:
         print(user)
-        print('this is username' + str(user['id']))
         current_stats = user['stats']
         user = UserProfile(user['id'], user['bio'], user['verified'], current_stats['followers'], current_stats['likes'])
 
-        print('this is like number for user ' + str(user.likeNumber))
-
-        text_file.write(user.username + ' ' + user.userBio + ' ' + str(user.verified) + ' ' + 
-        str(user.followCount) + ' ' +  str(user.likeNumber) +   '\n\n')
+        text_file.write(user.username + ', ' + user.userBio + ', ' + str(user.verified) + ', ' + 
+            str(user.followerCount) + ', ' +  str(user.likeNumber) +   '\n\n')
 
     # Closing file
     f.close()
@@ -34,24 +34,58 @@ def set_up_videos():
     text_file = open("video.txt", "w")
 
     for video in  data['collector']:
-        print('this is web video url' + video['webVideoUrl'])
 
         author_info = video['authorMeta']
 
         video = TikTokVideo(video['id'], author_info['name'], video['text'], video['commentCount'])
-        text_file.write(video.videoId + ' ' + video.username + ' ' + video.caption + ' ' + 
-        str(video.comments) +   '\n\n')
+        text_file.write(video.videoId + ', ' + video.username + ', ' + video.caption + ', ' + 
+            str(video.comments) +   '\n\n')
 
     f.close()
 
 
+def set_up_music():
+    with open('audd_music.csv', newline='') as csvfile:
+  
+        text_file_song = open("song.txt", "w")
+        reader = csv.DictReader(csvfile)
+        text_file_song.write('AudioId' + ', ' + 'Title' + ', ' + 'Artist' + 
+                 '\n')
+
+        text_file_album = open("album.txt", "w")
+        text_file_album.write('albumName' + ',' + 'artistName' + ',' + 'releaseYear' + 
+                '\n')
+
+        text_file_artist = open("artist.txt", "w")
+        text_file_artist.write('Artist' + ', ' + 'audioId' +
+                 '\n')
+
+        for row in reader:
+            current_song = Song(row['id'], row['title'], row['artist'])
+            text_file_song.write(str(current_song.audioId) + ', ' + current_song.title + ', ' + current_song.artist + ', ' + 
+                  '\n\n')
+            
+            release_date = row['release_date']
+            release_year = release_date[0:4]
+            current_album = Album(row['album'], row['artist'], release_year)
+            text_file_album.write(str(current_album.albumName) + ', ' + current_album.artistName + ', ' + current_album.releaseYear +  '\n\n')
+            
+            current_artist = Artist(row['artist'], row['id'])
+            text_file_artist.write(str(current_artist.artistName) + ', ' + current_artist.audioId +  '\n\n')
+
+        
+def set_up_revenue():
+    #a song makes about $0.003 to $0.005 per stream
+    print('this is revenue')
+
+
 #take out folllowing count
 class UserProfile:
-  def __init__(self, username, userBio, verified,  followCount, likeNumber):
+  def __init__(self, username, userBio, verified,  followerCount, likeNumber):
     self.username = username
     self.userBio = userBio
     self.verified = verified
-    self.followCount = followCount
+    self.followerCount = followerCount
     #self.followingCount = followingCount
     self.likeNumber = likeNumber
 
@@ -62,7 +96,32 @@ class TikTokVideo:
     self.caption = caption
     self.comments = comments
 
+class Song:
+    def __init__(self, audioId, title, artist):
+        self.audioId = audioId
+        self.title = title
+        self.artist = artist
+
+class Artist:
+    def __init__(self, artistName, audioId):
+        self.artistName = artistName
+        self.audioId = audioId
+      
+
+class Album:
+    def __init__(self, albumName, artistName, releaseYear):
+        self.albumName = albumName
+        self.artistName = artistName
+        self.releaseYear = releaseYear
+
+class Revenue:
+    def __init__(self, audioId, amount):
+        self.audioId = audioId
+        self.amount = amount
+
 
 if __name__ == "__main__":
-    #set_up_profiles()
+    set_up_profiles()
     set_up_videos()
+    set_up_music()
+    set_up_revenue()
