@@ -1,15 +1,16 @@
 CREATE TABLE Video (
-  videoId int NOT NULL,
+  videoId BigInt NOT NULL,
   username VARCHAR(255),
   caption VARCHAR(255),
   comments VARCHAR(255),
   PRIMARY KEY(videoId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/video-small.txt'
+LOAD DATA LOCAL INFILE './video-small.txt'
 INTO TABLE Video
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n';
+FIELDS TERMINATED BY '$'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
 
 SELECT * FROM Video;
 
@@ -22,36 +23,47 @@ CREATE TABLE UserProfile (
   PRIMARY KEY(username)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/userprofile-small.txt'
-INTO TABLE Video
-FIELDS TERMINATED BY ','
+LOAD DATA LOCAL INFILE './userprofile-small.txt'
+INTO TABLE UserProfile
+FIELDS TERMINATED BY '$'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+SELECT * FROM UserProfile;
+
+
 CREATE TABLE Song (
-  audioId int NOT NULL,
+  audioId BigInt NOT NULL,
   title VARCHAR(255),
   artist VARCHAR(255), 
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/song-small.txt'
-INTO TABLE Video
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE './song-small.txt'
+INTO TABLE Song
+FIELDS TERMINATED BY '#'
+LINES TERMINATED BY '\n';
+SELECT * FROM Song;
+
+
+
 
 CREATE TABLE Artist (
   artistName VARCHAR(255),
-  audioId int NOT NULL,
+  audioId BigInt NOT NULL,
   PRIMARY KEY(artistName)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/artist-small.txt'
-INTO TABLE Video
-FIELDS TERMINATED BY ','
+LOAD DATA LOCAL INFILE './artist-small.txt'
+INTO TABLE Artist
+FIELDS TERMINATED BY '*'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+SELECT * FROM Artist;
+
+
+
 
 CREATE TABLE Album (
   albumName VARCHAR(255),
@@ -60,18 +72,30 @@ CREATE TABLE Album (
   PRIMARY KEY(albumName, artistName)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/album-small.txt'
-INTO TABLE Video
+LOAD DATA LOCAL INFILE './album-small.txt'
+INTO TABLE Album
+FIELDS TERMINATED BY '#'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+SELECT * FROM Album;
+
+
+
+
+CREATE TABLE Revenue (
+  audioId BigInt NOT NULL,
+  amount DECIMAL(10, 2),
+  PRIMARY KEY(audioId)
+);
+
+LOAD DATA LOCAL INFILE './revenue-small.txt'
+INTO TABLE Revenue
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-SELECT * FROM Video;
-SELECT * FROM UserProfile;
-SELECT * FROM Song;
-SELECT * FROM Artist;
-SELECT * FROM Album;
-
+SELECT * FROM Revenue;
 
 
 
