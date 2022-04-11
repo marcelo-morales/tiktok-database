@@ -6,7 +6,7 @@ CREATE TABLE Video (
   PRIMARY KEY(videoId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/video.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/video-small.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n';
@@ -22,7 +22,7 @@ CREATE TABLE UserProfile (
   PRIMARY KEY(username)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/userprofile.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/userprofile-small.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -35,7 +35,7 @@ CREATE TABLE Song (
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/song.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/song-small.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -47,7 +47,7 @@ CREATE TABLE Artist (
   PRIMARY KEY(artistName)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/artist.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/artist-small.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
@@ -60,7 +60,7 @@ CREATE TABLE Album (
   PRIMARY KEY(albumName, artistName)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/album.txt'
+LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/album-small.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'

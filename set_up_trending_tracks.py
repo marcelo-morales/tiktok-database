@@ -19,8 +19,8 @@ def set_up_profiles():
         current_stats = user['stats']
         user = UserProfile(user['id'], user['bio'], user['verified'], current_stats['followers'], current_stats['likes'])
 
-        text_file.write(user.username + ', ' + user.userBio + ', ' + str(user.verified) + ', ' + 
-            str(user.followerCount) + ', ' +  str(user.likeNumber) +   '\n')
+        text_file.write(user.username + ' $ ' + user.userBio + ' $ ' + str(user.verified) + ' $ ' + 
+            str(user.followerCount) + ' $ ' +  str(user.likeNumber) +   '\n')
 
     # Closing file
     f.close()
@@ -38,7 +38,7 @@ def set_up_videos():
         author_info = video['authorMeta']
 
         video = TikTokVideo(video['id'], author_info['name'], video['text'], video['commentCount'])
-        text_file.write(video.videoId + ', ' + video.username + ', ' + video.caption + ', ' + 
+        text_file.write(video.videoId + ' $ ' + video.username + ' $ ' + video.caption + ' $ ' + 
             str(video.comments) +   '\n')
 
     f.close()
@@ -49,7 +49,7 @@ def set_up_music():
   
         text_file_song = open("song.txt", "w")
         reader = csv.DictReader(csvfile)
-        text_file_song.write('AudioId' + ', ' + 'Title' + ', ' + 'Artist' + 
+        text_file_song.write('AudioId' + ' # ' + 'Title' + ' # ' + 'Artist' + 
                  '\n')
 
         text_file_album = open("album.txt", "w")
@@ -57,21 +57,21 @@ def set_up_music():
                 '\n')
 
         text_file_artist = open("artist.txt", "w")
-        text_file_artist.write('Artist' + ', ' + 'audioId' +
+        text_file_artist.write('Artist' + ' * ' + 'audioId' +
                  '\n')
 
         for row in reader:
             current_song = Song(row['id'], row['title'], row['artist'])
-            text_file_song.write(str(current_song.audioId) + ', ' + current_song.title + ', ' + current_song.artist + ', ' + 
+            text_file_song.write(str(current_song.audioId) + ' # ' + current_song.title + ' # ' + current_song.artist + ' # ' + 
                   '\n')
             
             release_date = row['release_date']
             release_year = release_date[0:4]
             current_album = Album(row['album'], row['artist'], release_year)
-            text_file_album.write(str(current_album.albumName) + ', ' + current_album.artistName + ', ' + current_album.releaseYear +  '\n\n')
+            text_file_album.write(str(current_album.albumName) + ' # ' + current_album.artistName + ' # ' + current_album.releaseYear +  '\n')
             
             current_artist = Artist(row['artist'], row['id'])
-            text_file_artist.write(str(current_artist.artistName) + ', ' + current_artist.audioId +  '\n\n')
+            text_file_artist.write(str(current_artist.artistName) + ' * ' + current_artist.audioId +  '\n')
 
         
 def set_up_revenue():
