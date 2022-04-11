@@ -1,7 +1,6 @@
 import json
 import csv
 
-
 #cannot download this data set: https://www.kaggle.com/datasets/yamqwe/tiktok-trending-tracks?select=tiktok.csv 
 def set_up_profiles():
     #https://www.kaggle.com/datasets/lykin22/tiktok-trending-data
@@ -62,7 +61,7 @@ def set_up_music():
 
         for row in reader:
             current_song = Song(row['id'], row['title'], row['artist'])
-            text_file_song.write(str(current_song.audioId) + ' # ' + current_song.title + ' # ' + current_song.artist + ' # ' + 
+            text_file_song.write(str(current_song.audioId) + ' # ' + current_song.title + ' # ' + current_song.artist +
                   '\n')
             
             release_date = row['release_date']
