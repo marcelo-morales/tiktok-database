@@ -1,3 +1,6 @@
+Marcelo Morales - lmoral10
+Peter Novello - pnovell1
+
 TikTok Videos:
 * Download TikTok Trending Videos information as a JSON from https://www.kaggle.com/datasets/erikvdven/tiktok-trending-december-2020.
 * Run python script set_up_videos() to form Video relation and output the data we want to video.txt
@@ -10,10 +13,10 @@ User Profiles:
 # Artists, Songs, and Albums
 * Download TikTok music information from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data. Specifically,
 * you want to locate audd_music.csv
-* Run python set_up_music() to form UserProfile relation and output the data we want to userprofile.txt
+* Run python set_up_music() to form Artist, Song, and ALbum relation and output the data we want to artist.txt, song.txt, and album.txt respectively.
 
 # Revenue
 * We were unable to find a dataset matching audioids to their respective revenue figures. We decided to fix this problem by estimating
 the revenue for each song by multiplying 0.003 by the number of streams on spotify. Information about this means of estimation can be 
-found from https://freeyourmusic.com/blog/how-much-does-spotify-pay-per-stream
+found from https://freeyourmusic.com/blog/how-much-does-spotify-pay-per-stream. The estimation for the revenue made by a song is found in revenue.txt
 

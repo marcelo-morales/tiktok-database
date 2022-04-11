@@ -1,3 +1,8 @@
+/*
+Marcelo Morales - lmoral10
+Peter Novello - pnovell1
+*/
+
 DROP TABLE IF EXISTS Video;
 DROP TABLE IF EXISTS UserProfile;
 DROP TABLE IF EXISTS Song;

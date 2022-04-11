@@ -1,3 +1,8 @@
+/*
+Marcelo Morales - lmoral10
+Peter Novello - pnovell1
+*/
+
 CREATE TABLE Video (
   videoId BigInt NOT NULL,
   username VARCHAR(255),
