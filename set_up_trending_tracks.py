@@ -21,7 +21,14 @@ def set_up_profiles():
         text_file.write(user.username + ' $ ' + user.userBio + ' $ ' + str(user.verified) + ' $ ' + 
             str(user.followerCount) + ' $ ' +  str(user.likeNumber) +   '\n')
 
-    # Closing file
+    with open('tiktok_top_1000.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        for row in reader:
+            user = UserProfile(str('@' + row['Account']), row['Title'], True, row['Subscribers count'], row['Likes avg.'])
+            text_file.write(user.username + ' $ ' + user.userBio + ' $ ' + str(user.verified) + ' $ ' + 
+                str(user.followerCount) + ' $ ' +  str(user.likeNumber) +   '\n')
+
     f.close()
 
 def set_up_videos():
@@ -75,9 +82,8 @@ def set_up_music():
         
 def set_up_revenue():
     #a song makes about $0.003 to $0.005 per stream
-    
-
-    print('this is revenue')
+    #we have approximated the revenue using 
+    print('revenue can be found in revenue.txt file')
 
 
 #take out folllowing count

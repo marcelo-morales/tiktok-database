@@ -7,6 +7,8 @@ TikTok Videos:
 
 User Profiles:
 * Download TikTok profile information as a JSON from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data.
+* In addition, we are also going to get the most popular TikTok accounts using: https://www.kaggle.com/datasets/prasertk/top-1000-tiktok-influencers-ranking ,
+* which returns a CSV
 * Run python set_up_profiles() to form UserProfile relation and output the data we want to userprofile.txt
 * In addition, for the JSON returned back from the user profiles, you have to make sure to clear out all the newline characters in users.json
 
