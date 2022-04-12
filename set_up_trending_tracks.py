@@ -12,12 +12,16 @@ def set_up_profiles():
     
     # Iterating through the json
     # list
+    username_list = []
+
     text_file = open("userprofile.txt", "w")
     for user in data['user']:
         print(user)
         current_stats = user['stats']
         user = UserProfile(user['id'], user['bio'], user['verified'], current_stats['followers'], current_stats['likes'])
-
+        
+        username_list.append(user.username)
+        
         text_file.write(user.username + ' $ ' + user.userBio + ' $ ' + str(user.verified) + ' $ ' + 
             str(user.followerCount) + ' $ ' +  str(user.likeNumber) +   '\n')
 
@@ -26,6 +30,10 @@ def set_up_profiles():
 
         for row in reader:
             user = UserProfile(str('@' + row['Account']), row['Title'], True, row['Subscribers count'], row['Likes avg.'])
+            
+            if (user.username in username_list):
+                continue
+
             text_file.write(user.username + ' $ ' + user.userBio + ' $ ' + str(user.verified) + ' $ ' + 
                 str(user.followerCount) + ' $ ' +  str(user.likeNumber) +   '\n')
 

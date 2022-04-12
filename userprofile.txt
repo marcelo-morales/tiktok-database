@@ -32,7 +32,6 @@
 @chipmunksoftiktok $ Chipmunks of TikTok $ True $ 11400000.0 $ 3000000.0
 @charlidamelio $ charli d’amelio $ True $ 135400000.0 $ 2600000.0
 @yessicadcs $ Yessica y Moises 🦜 $ True $ 263700.0 $ 1400000.0
-@therock $ The Rock $ True $ 49700000.0 $ 3000000.0
 @the_pruld $ ThePruld $ True $ 433300.0 $ 2700000.0
 @lukedonkin $ Luke Donkin $ True $ 2000000.0 $ 2400000.0
 @mastertingus $ mastertingus $ True $ 1300000.0 $ 2000000.0
@@ -99,7 +98,6 @@
 @drewafualo $ Drew Afualo $ True $ 5700000.0 $ 1100000.0
 @johnnysins $ JohnnySins $ True $ 6900000.0 $ 667400.0
 @fujiiian $ Fuji $ True $ 10300000.0 $ 1200000.0
-@willsmith $ Will Smith $ True $ 65599999.99999999 $ 736600.0
 @jdpantoja $ JD Pantoja $ True $ 25700000.0 $ 1200000.0
 @thongsoaicavip $ Thông Soái Ca $ True $ 873900.0 $ 484300.0
 @vhackerr $ Vinnie $ True $ 13500000.0 $ 742700.0
@@ -589,7 +587,6 @@
 @nabela $ nabela $ True $ 7200000.0 $ 411900.0
 @rawanfahmii $ rawan $ True $ 3300000.0 $ 274800.0
 @faryanggaa $ Ryann $ True $ 3700000.0 $ 339000.0
-@gordonramsayofficial $ Gordon Ramsay $ True $ 30900000.0 $ 267800.0
 @danivallem $ Dani Valle $ True $ 3300000.0 $ 116100.0
 @louuuyoung $ louuuyoung $ True $ 467600.0 $ 155100.0
 @gorowok21 $ MAFIA BANGLADESH $ True $ 352800.0 $ 202200.0
@@ -708,7 +705,6 @@
 @kopke613 $ kopke613 $ True $ 3500000.0 $ 142200.0
 @leirbag____ $ LEIRBAG EL FARAÓN $ True $ 1400000.0 $ 140700.0
 @marianne.la.mesera $ Marianne 🍸 $ True $ 2800000.0 $ 493600.0
-@shawnmendes $ Shawn Mendes $ True $ 8400000.0 $ 242100.0
 @gavrilinaa $ Юлька Шпулька🕷🕸 $ True $ 15800000.0 $ 275300.0
 @alitaalvarez5 $ Alita Alvarez $ True $ 7900.0 $ 94100.0
 @pipepunkoficial $ Pipepunk $ True $ 991200.0 $ 397800.0
