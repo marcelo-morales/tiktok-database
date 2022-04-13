@@ -10,3 +10,13 @@ we decided to use websites explaining the estimation of how much revenue can be 
 a song receives on a major platform, such as Spotify. We then estimated the revenue each song could have made and paired the revenues with the specific audio id for each of the songs looked at in our database. We hope that this estimation can 
 still allow us to bring in our economic domain of interest and compare the popularity, likes, and other characteristics of a 
 tiktok video against certain revenue indicators to make the project more interesting. 
+
+# Run set up script
+
+To run the set up script, make you are in the most outmost directory and run 
+  ```bash
+python set_up_tiktok_info.py 
+```
+so that your txt files can be filled with data.
+
+

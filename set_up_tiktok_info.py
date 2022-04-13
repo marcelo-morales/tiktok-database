@@ -16,7 +16,7 @@ def set_up_profiles():
 
     text_file = open("userprofile.txt", "w")
     for user in data['user']:
-        print(user)
+
         current_stats = user['stats']
         user = UserProfile(user['id'], user['bio'], user['verified'], current_stats['followers'], current_stats['likes'])
         
@@ -140,3 +140,4 @@ if __name__ == "__main__":
     set_up_videos()
     set_up_music()
     set_up_revenue()
+    print("All the text files have been filled with data")
