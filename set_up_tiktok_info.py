@@ -51,9 +51,9 @@ def set_up_videos():
 
         author_info = video['authorMeta']
 
-        video = TikTokVideo(video['id'], author_info['name'], video['text'], video['commentCount'])
+        video = TikTokVideo(video['id'], author_info['name'], video['text'], video['commentCount'], video['diggCount'])
         text_file.write(video.videoId + ' $ ' + video.username + ' $ ' + video.caption + ' $ ' + 
-            str(video.comments) +   '\n')
+            str(video.comments) + ' $ ' +  str(video.likeCount) + '\n')
 
     f.close()
 
@@ -105,11 +105,12 @@ class UserProfile:
     self.likeNumber = likeNumber
 
 class TikTokVideo:
-  def __init__(self, videoId, username, caption, comments):
+  def __init__(self, videoId, username, caption, comments, likeCount):
     self.videoId = videoId
     self.username = username
     self.caption = caption
     self.comments = comments
+    self.likeCount = likeCount
 
 class Song:
     def __init__(self, audioId, title, artist):
