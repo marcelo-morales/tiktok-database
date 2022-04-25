@@ -19,4 +19,5 @@ VALUES ('VIDA', 'Luis Fonsi', '2019');
 INSERT INTO Artist (artistName,audioId)
 VALUES ('Luis Fonsi', '98765');
 
+-- Deleting a tiktok video - foreign key contraints?
 DELETE FROM Video WHERE videoId='12345';
