@@ -1,9 +1,8 @@
 -- Query 1
 -- Which song made the least amount of revenue in the timeframe of December 2020?
-SELECT Song.title, Song.Artist
-    FROM Song as S
-    WHERE MIN(amount) JOIN Revenue;
-
+SELECT Song.title, Song.artist, MIN(Revenue.amount)
+    FROM Song, Revenue
+    WHERE Song.audioId = Revenue.audioId;
 
 -- Query 2
 -- What is the average follower count for profiles that had trending TikTok videos in December 2020?
@@ -44,12 +43,6 @@ SELECT Song.title
 SELECT UserProfile.username, AVG(UserProfile.followerCount)
     FROM UserProfile, Video
     WHERE UserProfile.username = Video.username; 
-
---  Query 8
--- Which song made the least amount of revenue in the timeframe of December 2020?
-SELECT Song.title, Song.artist, MIN(Revenue.amount)
-    FROM Song, Revenue
-    WHERE Song.audioId = Revenue.audioId;
 
 -- Query 9
 -- List the caption and sound/song used for the TikTok video that has the longest caption from all unverified users
