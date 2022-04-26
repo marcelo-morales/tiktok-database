@@ -64,6 +64,30 @@ SELECT UserProfile.username
 SELECT Video.caption, AVG(Video.likeNumber)
     FROM Video
     WHERE Video.caption LIKE '%#%';
--- Query 12
--- “Out of original TikTok video audios, list the artist and caption with captions that are longer than 50 characters?
 
+
+-- Query 12
+-- “Out of original TikTok video audios, list the username and caption with captions that are longer than 50 characters?
+
+SELECT Video.username, Video.caption
+FROM Video
+WHERE LENGTH(Video.caption) > 50
+GROUP BY Video.username;
+
+
+-- Query 13
+ -- "Out of profiles that are verified in TikTok, list the minimum number of followers and maximum numbers of likes, as well as the associated userID"
+
+SELECT UserProfile.userName, MIN(UserProfile.followerCount), MAX(UserProfile.likeCount)
+FROM UserProfile
+WHERE UserProfile.verified = 'True'
+GROUP BY UserProfile.userName;
+
+
+-- Query 14
+
+-- "Out of profiles that are verified in TikTok, list the username and number of likes for each of their TikTok Videos from December 2020. 
+
+-- Query 15
+
+--" For the artist who made the most revenue from TikTok videos in December 2020, list each of their audios in terms of least to greatest revenue"
