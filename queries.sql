@@ -78,16 +78,30 @@ GROUP BY Video.username;
 -- Query 13
  -- "Out of profiles that are verified in TikTok, list the minimum number of followers and maximum numbers of likes, as well as the associated userID"
 
-SELECT UserProfile.userName, MIN(UserProfile.followerCount), MAX(UserProfile.likeCount)
+SELECT UserProfile.userName, MIN(UserProfile.followerCount), MAX(UserProfile.likeNumber)
 FROM UserProfile
-WHERE UserProfile.verified = 'True'
-GROUP BY UserProfile.userName;
-
+WHERE UserProfile.verified LIKE 'True';
 
 -- Query 14
 
--- "Out of profiles that are verified in TikTok, list the username and number of likes for each of their TikTok Videos from December 2020. 
+-- "Out of profiles that are verified in TikTok, list the username and number of comments for each of their TikTok Videos from December 2020. 
+
+SELECT UserProfile.userName, Video.comments
+FROM UserProfile JOIN Video ON UserProfile.userName = Video.userName
+WHERE UserProfile.verified LIKE '%True%'
+GROUP BY UserProfile.userName;
+
 
 -- Query 15
 
---" For the artist who made the most revenue from TikTok videos in December 2020, list each of their audios in terms of least to greatest revenue"
+--"For the artist who made the most revenue from TikTok videos in December 2020, list each of their audios in order from least to greatest revenue"
+
+
+WITH maxArtist AS (
+    SELECT MAX(Revenue.amount) AS 'highest'
+    FROM Revenue
+)
+SELECT Song.title 
+FROM Song NATURAL JOIN Revenue, maxArtist
+WHERE Song.audioID = Revenue.audioID AND Revenue.amount = maxArtist.highest
+ORDER BY Revenue.amount ASC;
