@@ -57,6 +57,14 @@ SELECT UserProfile.username, AVG(UserProfile.followerCount)
     FROM UserProfile, Video
     WHERE UserProfile.username = Video.username; 
 
+-- Query 8
+-- List all artists that have released a song that is trending in TikTok that has the letter A in their name.
+-- Give me back the artist name and the audio ID for this specific artist
+SELECT Artist.artistname, Artist.audioName
+    FROM Artist
+    WHERE Artist.artistname LIKE '%A%';
+
+
 -- Query 9
 -- List the caption and sound/song used for the TikTok video that has the longest caption from all unverified users
 SELECT Video.caption, Song.title
@@ -84,7 +92,6 @@ SELECT Video.caption, AVG(Video.likeNumber)
 -- Query 12
 -- “Out of original TikTok video audios, list the username and caption with captions that are longer than 50 characters?
 -- Give me back the username of user who posted the video and caption of the video that fits the given descriptions.
-
 SELECT Video.username, Video.caption
     FROM Video
     WHERE LENGTH(Video.caption) > 50
