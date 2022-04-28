@@ -98,10 +98,12 @@ GROUP BY UserProfile.userName;
 
 
 WITH maxArtist AS (
-    SELECT MAX(Revenue.amount) AS 'highest'
-    FROM Revenue
+    SELECT MAX(Revenue.amount) AS 'highest', Artist.audioID AS 'maxArtist'
+    FROM Revenue NATURAL JOIN Artist
 )
 SELECT Song.title 
-FROM Song NATURAL JOIN Revenue, maxArtist
-WHERE Song.audioID = Revenue.audioID AND Revenue.amount = maxArtist.highest
+FROM Song JOIN maxArtist ON
+     Song.audioID = maxArtist.maxArtist
+     JOIN Revenue ON
+     Song.audioID = Revenue.audioID
 ORDER BY Revenue.amount ASC;
