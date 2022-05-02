@@ -1,5 +1,6 @@
 import json
 import csv
+import random
 
 #cannot download this data set: https://www.kaggle.com/datasets/yamqwe/tiktok-trending-tracks?select=tiktok.csv 
 def set_up_profiles():
@@ -40,6 +41,25 @@ def set_up_profiles():
 
             profiles_text_file.write(user.username + ' % ' + user.personName + ' % ' +  user.userBio + ' % ' + str(user.verified) + ' % ' + 
                 str(user.followerCount) + ' % ' +  str(user.likeNumber) + ' % ' +    '\n')
+
+    
+    # trending_artists = open('source-datasets/trending.json')
+    # data = json.load(trending_artists)
+
+
+    # for video in data['collector']:
+    #     author_info = video['authorMeta']
+
+    #     verification_result = str(author_info['verified'])
+
+
+    #     user = UserProfile(str('@' + author_info['name']), author_info['nickName'], author_info['signature'] ,verification_result.capitalize(), random.randint(100000, 50000000), random.randint(100000, 50000000))
+    #     if (user.username in username_list):
+    #             continue
+
+    #     profiles_text_file.write(user.username + ' % ' + user.personName + ' % ' +  user.userBio + ' % ' + str(user.verified) + ' % ' + 
+    #         str(user.followerCount) + ' % ' +  str(user.likeNumber) + ' % ' +    '\n')
+
 
     f.close()
 

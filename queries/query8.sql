@@ -9,6 +9,12 @@ DROP PROCEDURE IF EXISTS Query8 //
 
 CREATE PROCEDURE Query8()
 BEGIN
+
+    SELECT Artist.artistname, Song.title
+    FROM Artist
+    JOIN Song ON Song.audioId = Artist.audioId
+    WHERE Artist.artistname LIKE '%A%';
+
     
 END; //
 

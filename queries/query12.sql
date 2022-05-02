@@ -8,6 +8,10 @@ DROP PROCEDURE IF EXISTS Query12 //
 
 CREATE PROCEDURE Query12()
 BEGIN
+    SELECT Video.username, Video.caption
+    FROM Video
+    WHERE LENGTH(Video.caption) > 50
+    GROUP BY Video.username;
     
 END; //
 
