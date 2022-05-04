@@ -1,5 +1,5 @@
 --  Query 4
---  “What album has the most trending songs in TikTok in December 2020 and have been released in the past 2 years?”
+--  What album has the most trending songs in TikTok in December 2020 and has been released in the past 2 years?
 -- Give me back the album name, and release year in descending order.
 
 
@@ -11,7 +11,7 @@ CREATE PROCEDURE Query4()
 
 BEGIN
 
-    DECLARE currentYear DOUBLE;
+    DECLARE currentYear INT;
     SET currentYear = 2022;
 
     SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear

@@ -1,6 +1,6 @@
 -- Query 15
 --For the artist who made the most revenue from TikTok videos in December 2020, list the song title, artist name
--- and revenue amoun, sorted in highest to lowest revenue amount if the artist has released multiple songs
+-- and revenue amount, sorted in highest to lowest revenue amount if the artist has released multiple songs
 
 DELIMITER //
 
