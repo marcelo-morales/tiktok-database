@@ -8,7 +8,7 @@ DROP PROCEDURE IF EXISTS Query7 //
 
 CREATE PROCEDURE Query7()
 BEGIN
-    SELECT UserProfile.username, AVG(UserProfile.followerCount)
+    SELECT UserProfile.username, AVG(UserProfile.followerCount) AS 'averageFollowerCount'
     FROM UserProfile, Video
     WHERE UserProfile.username = Video.username; 
 END; //

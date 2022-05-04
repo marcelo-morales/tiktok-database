@@ -1,0 +1,21 @@
+.wrapper {
+    text-align: center;
+}
+
+.header {
+    display: inline-flex;
+}
+
+.logo {
+    max-width: 5rem;
+}
+
+.pad {
+    padding: 1rem;
+}
+
+.center {
+    right: auto!important;
+    left: 50%!important;
+    transform: translate(-50%, 13%)!important;
+}

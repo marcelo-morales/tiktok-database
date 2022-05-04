@@ -7,6 +7,7 @@ DROP PROCEDURE IF EXISTS Query13 //
 
 CREATE PROCEDURE Query13()
 BEGIN
+
     
 END; //
 

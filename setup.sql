@@ -155,6 +155,14 @@ SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYea
 SELECT * FROM Song;
 SELECT * FROM Album;
 
+SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Minimum_Revenue
+        FROM Song, Revenue
+        WHERE Song.audioId = Revenue.audioId;
+        
+ SELECT AVG(UserProfile.followerCount) AS Average_Follower_Count
+        FROM UserProfile
+        WHERE UserProfile.likeNumber > 1200000;
+
 
 SELECT Song.title, Album.studio
     FROM Song
@@ -235,3 +243,21 @@ SELECT Song.title, Revenue.amount
     JOIN Revenue ON Song.audioId = Revenue.audioId
     WHERE Revenue.amount > 10000 
     GROUP BY Revenue.amount DESC;
+    
+    
+    
+  SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
+    FROM Artist
+    GROUP BY Artist.artistName
+    ORDER BY
+    COUNT(Artist.artistName) DESC;
+    
+    
+    DECLARE @currentYear INT;
+    SET @currentYear = 2022;
+
+    SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
+    FROM Album
+    WHERE currentYear -  Album.releaseYear >= 2
+    GROUP BY Album.albumName
+    ORDER BY COUNT(Album.albumName) DESC ;
