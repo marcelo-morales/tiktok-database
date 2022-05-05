@@ -134,10 +134,8 @@ CREATE PROCEDURE Query2()
 BEGIN
     SELECT AVG(UserProfile.followerCount)
         FROM UserProfile
-        WHERE UserProfile.likeNumber > 1200000
-    ;
-    
-    ;
+        WHERE UserProfile.likeNumber > 1200000;
+
 END; //
 
 DELIMITER ;
