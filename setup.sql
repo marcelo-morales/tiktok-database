@@ -98,8 +98,6 @@ IGNORE 1 ROWS;
 SELECT * FROM Album;
 
 
-
-
 CREATE TABLE Revenue (
   audioId BigInt NOT NULL,
   amount DECIMAL(10, 2),
@@ -111,6 +109,198 @@ INTO TABLE Revenue
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
+
+DELIMITER //
+
+
+-- Stored Procedures
+
+DROP PROCEDURE IF EXISTS Query1 //
+
+CREATE PROCEDURE Query1()
+BEGIN
+    SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Minimum_Revenue
+        FROM Song, Revenue
+        WHERE Song.audioId = Revenue.audioId;
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query2 //
+
+CREATE PROCEDURE Query2()
+BEGIN
+    SELECT AVG(UserProfile.followerCount)
+        FROM UserProfile
+        WHERE UserProfile.likeNumber > 1200000
+    ;
+    
+    ;
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query3 //
+
+CREATE PROCEDURE Query3()
+BEGIN
+
+    SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
+    FROM Artist
+    GROUP BY Artist.artistName
+    ORDER BY
+    COUNT(Artist.artistName) DESC;
+    
+END; //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query4 //
+
+CREATE PROCEDURE Query4()
+
+BEGIN
+
+    DECLARE currentYear INT;
+    SET currentYear = 2022;
+
+    SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
+    FROM Album
+    WHERE currentYear -  Album.releaseYear >= 2
+    GROUP BY Album.albumName
+    ORDER BY COUNT(Album.albumName) DESC ;
+    
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query5 //
+
+CREATE PROCEDURE Query5()
+BEGIN
+    SELECT Song.title, Revenue.amount
+    FROM Song
+    JOIN Revenue ON Song.audioId = Revenue.audioId
+    WHERE Revenue.amount > 10000 
+    GROUP BY Revenue.amount DESC;
+
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query6 //
+
+CREATE PROCEDURE Query6()
+BEGIN
+     WITH averageViews(averageLikeNumber) as 
+        (SELECT AVG(Video.likeCount)
+        FROM Video)
+        SELECT Video.username, Video.caption, Video.likeCount
+        FROM Video, averageViews
+        WHERE Video.likeCount > averageViews.averageLikeNumber;
+
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query7 //
+
+CREATE PROCEDURE Query7()
+BEGIN
+    SELECT UserProfile.username, AVG(UserProfile.followerCount) AS 'averageFollowerCount'
+    FROM UserProfile, Video
+    WHERE UserProfile.username = Video.username; 
+END; //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query8 //
+
+CREATE PROCEDURE Query8()
+BEGIN
+
+    SELECT Artist.artistname, Song.title
+    FROM Artist
+    JOIN Song ON Song.audioId = Artist.audioId
+    WHERE Artist.artistname LIKE '%A%';
+
+    
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query12 //
+
+CREATE PROCEDURE Query12()
+BEGIN
+    SELECT Video.username, Video.caption
+    FROM Video
+    WHERE LENGTH(Video.caption) > 50
+    GROUP BY Video.username;
+    
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query14 //
+
+CREATE PROCEDURE Query14()
+BEGIN
+    SELECT UserProfile.userName, UserProfile.likeNumber
+    FROM UserProfile 
+    WHERE UserProfile.verified LIKE '%True%'
+    GROUP BY UserProfile.userName;
+
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query15 //
+
+CREATE PROCEDURE Query15()
+BEGIN
+     
+    WITH maxArtist AS (
+        SELECT MAX(Revenue.amount) AS 'highest', Artist.audioID AS 'maxArtist'
+        FROM Revenue NATURAL JOIN Artist
+    )
+    SELECT Song.title, Song.artist, Revenue.amount 
+    FROM Song JOIN maxArtist ON
+        Song.audioID = maxArtist.maxArtist
+        JOIN Revenue ON
+        Song.audioID = Revenue.audioID
+    ORDER BY Revenue.amount ASC;
+    
+END; //
+
+DELIMITER ;
+
+
+
+
+
 
 -- SELECT * FROM Revenue;
 
