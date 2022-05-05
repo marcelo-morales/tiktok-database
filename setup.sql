@@ -9,7 +9,6 @@ DROP TABLE IF EXISTS Song;
 DROP TABLE IF EXISTS Artist;
 DROP TABLE IF EXISTS Album;
 DROP TABLE IF EXISTS Revenue;
-DROP TABLE IF EXISTS Player;
 
 CREATE TABLE Video (
   videoId BigInt NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE Video (
   PRIMARY KEY(videoId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/video.txt'
+LOAD DATA LOCAL INFILE './text-datasets/video.txt'
 INTO TABLE Video
 FIELDS TERMINATED BY '$'
 LINES TERMINATED BY '\n'
@@ -38,7 +37,7 @@ CREATE TABLE UserProfile (
   PRIMARY KEY(username)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/userprofile.txt'
+LOAD DATA LOCAL INFILE './text-datasets/userprofile.txt'
 INTO TABLE UserProfile
 FIELDS TERMINATED BY '%'
 LINES TERMINATED BY '\n'
@@ -54,7 +53,7 @@ CREATE TABLE Song (
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/song.txt'
+LOAD DATA LOCAL INFILE './text-datasets/song.txt'
 INTO TABLE Song
 FIELDS TERMINATED BY '#'
 LINES TERMINATED BY '\n'
@@ -71,7 +70,7 @@ CREATE TABLE Artist (
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/artist.txt'
+LOAD DATA LOCAL INFILE './text-datasets/artist.txt'
 INTO TABLE Artist
 FIELDS TERMINATED BY '*'
 LINES TERMINATED BY '\n'
@@ -90,7 +89,7 @@ CREATE TABLE Album (
   PRIMARY KEY(albumName, artistName)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/album.txt'
+LOAD DATA LOCAL INFILE './text-datasets/album.txt'
 INTO TABLE Album
 FIELDS TERMINATED BY '#'
 LINES TERMINATED BY '\n'
@@ -107,157 +106,157 @@ CREATE TABLE Revenue (
   PRIMARY KEY(audioId)
 );
 
-LOAD DATA LOCAL INFILE '/Users/marcelomorales/Desktop/SPRING2022JHU/databases/tiktok-database/text-datasets/revenue.txt'
+LOAD DATA LOCAL INFILE './text-datasets/revenue.txt'
 INTO TABLE Revenue
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-SELECT * FROM Revenue;
+-- SELECT * FROM Revenue;
 
 
-SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Revenue
-    FROM Song, Revenue
-    WHERE Song.audioId = Revenue.audioId;
+-- SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Revenue
+--     FROM Song, Revenue
+--     WHERE Song.audioId = Revenue.audioId;
     
 
-SELECT * FROM UserProfile;
+-- SELECT * FROM UserProfile;
 
-SELECT AVG(UserProfile.followerCount)
-    FROM UserProfile
-    WHERE UserProfile.likeNumber > 1200000
-    ;
+-- SELECT AVG(UserProfile.followerCount)
+--     FROM UserProfile
+--     WHERE UserProfile.likeNumber > 1200000
+--     ;
     
-SELECT Artist.artistName, COUNT (Artist.artistName) as 'frequency'
-    FROM Artist
-    ORDER BY 'frequency';
-    
- 
- SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
- FROM Artist
- GROUP BY Artist.artistName
- ORDER BY
- COUNT(Artist.artistName) DESC;
-    
-    
-SELECT * FROM Artist;
-
-SELECT * FROM Album;
-
-
-SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
-    FROM Album
-    WHERE 2022 -  Album.releaseYear >= 2
-    GROUP BY Album.albumName
-    ORDER BY COUNT(Album.albumName) DESC ;
-
-
-SELECT * FROM Song;
-SELECT * FROM Album;
-
-SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Minimum_Revenue
-        FROM Song, Revenue
-        WHERE Song.audioId = Revenue.audioId;
-        
- SELECT AVG(UserProfile.followerCount) AS Average_Follower_Count
-        FROM UserProfile
-        WHERE UserProfile.likeNumber > 1200000;
-
-
-SELECT Song.title, Album.studio
-    FROM Song
-    JOIN Album ON Song.artist = Album.artistName ;
-    
-
-        
- WITH averageViews(averageLikeNumber) as 
-        (SELECT AVG(Video.likeCount)
-        FROM Video)
-        SELECT Video.username, Video.caption, Video.likeCount
-        FROM Video, averageViews
-        WHERE Video.likeCount > averageViews.averageLikeNumber;
-        
-SELECT * FROM Video;
-SELECT * FROM UserProfile;
-
-SELECT UserProfile.username, AVG(UserProfile.likeNumber)
-    FROM UserProfile; 
-    
-SELECT UserProfile.username, AVG(UserProfile.followerCount)
-    FROM UserProfile, Video
-    WHERE UserProfile.username = Video.username; 
-    
+-- SELECT Artist.artistName, COUNT (Artist.artistName) as 'frequency'
+--     FROM Artist
+--     ORDER BY 'frequency';
     
  
-WITH maxArtist AS (
-    SELECT MAX(Revenue.amount) AS 'highest', Artist.audioID AS 'maxArtist'
-    FROM Revenue NATURAL JOIN Artist
-)
-SELECT Song.title, Song.artist, Revenue.amount 
-FROM Song JOIN maxArtist ON
-     Song.audioID = maxArtist.maxArtist
-     JOIN Revenue ON
-     Song.audioID = Revenue.audioID
-ORDER BY Revenue.amount ASC;
-
-
-SELECT UserProfile.userName
-FROM UserProfile 
-WHERE UserProfile.verified LIKE '%True%'
-GROUP BY UserProfile.userName;
-
-
-
-
-SELECT UserProfile.userName, UserProfile.likeNumber
-FROM UserProfile 
-WHERE UserProfile.verified LIKE '%True%'
-GROUP BY UserProfile.userName;
-
-
-SELECT Video.username, Video.caption
-    FROM Video
-    WHERE LENGTH(Video.caption) > 50
-    GROUP BY Video.username;
-    
-
-SELECT Video.caption, AVG(Video.likeCount)
-    FROM Video
-    WHERE Video.caption LIKE '%#%';
-
-SELECT * FROM UserProfile;
-SELECT * FROM Video;
-SELECT * FROM Song;
-SELECT * FROm Artist;
-
-
-
-SELECT Artist.artistname, Song.title
-    FROM Artist
-    JOIN Song ON Song.audioId = Artist.audioId
-    WHERE Artist.artistname LIKE '%A%';
+--  SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
+--  FROM Artist
+--  GROUP BY Artist.artistName
+--  ORDER BY
+--  COUNT(Artist.artistName) DESC;
     
     
-SELECT Song.title, Revenue.amount
-    FROM Song
-    JOIN Revenue ON Song.audioId = Revenue.audioId
-    WHERE Revenue.amount > 10000 
-    GROUP BY Revenue.amount DESC;
-    
-    
-    
-  SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
-    FROM Artist
-    GROUP BY Artist.artistName
-    ORDER BY
-    COUNT(Artist.artistName) DESC;
-    
-    
-    DECLARE @currentYear INT;
-    SET @currentYear = 2022;
+-- SELECT * FROM Artist;
 
-    SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
-    FROM Album
-    WHERE currentYear -  Album.releaseYear >= 2
-    GROUP BY Album.albumName
-    ORDER BY COUNT(Album.albumName) DESC ;
+-- SELECT * FROM Album;
+
+
+-- SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
+--     FROM Album
+--     WHERE 2022 -  Album.releaseYear >= 2
+--     GROUP BY Album.albumName
+--     ORDER BY COUNT(Album.albumName) DESC ;
+
+
+-- SELECT * FROM Song;
+-- SELECT * FROM Album;
+
+-- SELECT Song.title, Song.artist, MIN(Revenue.amount) AS Minimum_Revenue
+--         FROM Song, Revenue
+--         WHERE Song.audioId = Revenue.audioId;
+        
+--  SELECT AVG(UserProfile.followerCount) AS Average_Follower_Count
+--         FROM UserProfile
+--         WHERE UserProfile.likeNumber > 1200000;
+
+
+-- SELECT Song.title, Album.studio
+--     FROM Song
+--     JOIN Album ON Song.artist = Album.artistName ;
+    
+
+        
+--  WITH averageViews(averageLikeNumber) as 
+--         (SELECT AVG(Video.likeCount)
+--         FROM Video)
+--         SELECT Video.username, Video.caption, Video.likeCount
+--         FROM Video, averageViews
+--         WHERE Video.likeCount > averageViews.averageLikeNumber;
+        
+-- SELECT * FROM Video;
+-- SELECT * FROM UserProfile;
+
+-- SELECT UserProfile.username, AVG(UserProfile.likeNumber)
+--     FROM UserProfile; 
+    
+-- SELECT UserProfile.username, AVG(UserProfile.followerCount)
+--     FROM UserProfile, Video
+--     WHERE UserProfile.username = Video.username; 
+    
+    
+ 
+-- WITH maxArtist AS (
+--     SELECT MAX(Revenue.amount) AS 'highest', Artist.audioID AS 'maxArtist'
+--     FROM Revenue NATURAL JOIN Artist
+-- )
+-- SELECT Song.title, Song.artist, Revenue.amount 
+-- FROM Song JOIN maxArtist ON
+--      Song.audioID = maxArtist.maxArtist
+--      JOIN Revenue ON
+--      Song.audioID = Revenue.audioID
+-- ORDER BY Revenue.amount ASC;
+
+
+-- SELECT UserProfile.userName
+-- FROM UserProfile 
+-- WHERE UserProfile.verified LIKE '%True%'
+-- GROUP BY UserProfile.userName;
+
+
+
+
+-- SELECT UserProfile.userName, UserProfile.likeNumber
+-- FROM UserProfile 
+-- WHERE UserProfile.verified LIKE '%True%'
+-- GROUP BY UserProfile.userName;
+
+
+-- SELECT Video.username, Video.caption
+--     FROM Video
+--     WHERE LENGTH(Video.caption) > 50
+--     GROUP BY Video.username;
+    
+
+-- SELECT Video.caption, AVG(Video.likeCount)
+--     FROM Video
+--     WHERE Video.caption LIKE '%#%';
+
+-- SELECT * FROM UserProfile;
+-- SELECT * FROM Video;
+-- SELECT * FROM Song;
+-- SELECT * FROm Artist;
+
+
+
+-- SELECT Artist.artistname, Song.title
+--     FROM Artist
+--     JOIN Song ON Song.audioId = Artist.audioId
+--     WHERE Artist.artistname LIKE '%A%';
+    
+    
+-- SELECT Song.title, Revenue.amount
+--     FROM Song
+--     JOIN Revenue ON Song.audioId = Revenue.audioId
+--     WHERE Revenue.amount > 10000 
+--     GROUP BY Revenue.amount DESC;
+    
+    
+    
+--   SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
+--     FROM Artist
+--     GROUP BY Artist.artistName
+--     ORDER BY
+--     COUNT(Artist.artistName) DESC;
+    
+    
+--     DECLARE @currentYear INT;
+--     SET @currentYear = 2022;
+
+--     SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
+--     FROM Album
+--     WHERE currentYear -  Album.releaseYear >= 2
+--     GROUP BY Album.albumName
+--     ORDER BY COUNT(Album.albumName) DESC ;

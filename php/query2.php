@@ -8,7 +8,7 @@
     <?php
     include 'open.php';
 
-    echo "<h2>MVP statistic titles</h2><br>";
+    echo "<h2>Average follower count for trending TikTok profiles</h2><br>";
 
     if ($result = $conn->query("CALL Query2();")) {
         echo "<table class=\"table table-striped\">";
