@@ -132,7 +132,7 @@ DROP PROCEDURE IF EXISTS Query2 //
 
 CREATE PROCEDURE Query2()
 BEGIN
-    SELECT AVG(UserProfile.followerCount)
+    SELECT ROUND(AVG(UserProfile.followerCount), 0)
         FROM UserProfile
         WHERE UserProfile.likeNumber > 1200000;
 
@@ -146,8 +146,7 @@ DROP PROCEDURE IF EXISTS Query3 //
 
 CREATE PROCEDURE Query3()
 BEGIN
-
-    SELECT Artist.artistName, COUNT (Artist.artistName) AS 'frequency'
+    SELECT Artist.artistName, COUNT(Artist.artistName) AS 'frequency'
     FROM Artist
     GROUP BY Artist.artistName
     ORDER BY
@@ -169,7 +168,7 @@ BEGIN
     DECLARE currentYear INT;
     SET currentYear = 2022;
 
-    SELECT Album.albumName, COUNT (Album.albumName) as 'frequency', Album.releaseYear
+    SELECT Album.albumName, COUNT(Album.albumName) as 'frequency', Album.releaseYear
     FROM Album
     WHERE currentYear -  Album.releaseYear >= 2
     GROUP BY Album.albumName
@@ -218,9 +217,7 @@ DROP PROCEDURE IF EXISTS Query7 //
 
 CREATE PROCEDURE Query7()
 BEGIN
-    SELECT UserProfile.username, AVG(UserProfile.followerCount) AS 'averageFollowerCount'
-    FROM UserProfile, Video
-    WHERE UserProfile.username = Video.username; 
+    SELECT UserProfile.username, AVG(UserProfile.followerCount) AS 'averageFollowerCount';
 END; //
 
 DELIMITER ;

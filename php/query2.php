@@ -17,7 +17,7 @@
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";
-            echo "<td>" . $row["Average_Follower_Count"] . "</td>";
+            echo "<td>" . $row["ROUND(AVG(UserProfile.followerCount), 0)"] . "</td>";
             echo "</tr>";
         }
         echo "</tbody></table>";

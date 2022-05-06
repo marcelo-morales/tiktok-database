@@ -1,5 +1,5 @@
 <head>
-    <title>Find all TikTok videos whose videos are more than the average number of likes?</title>
+    <title>Popular TikTok Videos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -8,12 +8,12 @@
     <?php
     include 'open.php';
 
-    echo "<h2>Popular TikTok Videos</h2><br>";
+    echo "<h2>Find all TikTok videos whose videos are more than the average number of likes?</h2><br>";
 
     if ($result = $conn->query("CALL Query6();")) {
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
-        echo "<tr><th>Above average popularity TikTok videos</th></tr>";
+        echo "<tr><th>Username of TikTok Profile</th><th>Caption of TikTok Video</th><th>Number of likes on Video</th></tr>";
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";

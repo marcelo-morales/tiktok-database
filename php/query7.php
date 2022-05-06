@@ -1,5 +1,5 @@
 <head>
-    <title>What is the average like count for profiles that had trending TikTok videos in December 2020?</title>
+    <title>Average Like Count for Trending videos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -8,7 +8,7 @@
     <?php
     include 'open.php';
 
-    echo "<h2>Like count for popular TikTok Videos</h2><br>";
+    echo "<h2>What is the average like count for profiles that had trending TikTok videos in December 2020?</h2><br>";
 
     if ($result = $conn->query("CALL Query7();")) {
         echo "<table class=\"table table-striped\">";

@@ -13,7 +13,7 @@
     if ($result = $conn->query("CALL Query5();")) {
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
-        echo "<tr><th>Profitable singles</th></tr>";
+        echo "<tr><th>Song title</th><th>Revenue amount in Dollars</th></tr>";
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";
