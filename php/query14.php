@@ -17,7 +17,7 @@
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";
-            echo "<td>" . $row["username"] . "</td>";
+            echo "<td>" . $row["userName"] . "</td>";
             echo "<td>" . $row["likeNumber"] . "</td>";
             echo "</tr>";
         }

@@ -13,12 +13,13 @@
     if ($result = $conn->query("CALL Query7();")) {
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
-        echo "<tr><th>Like count and username for popular TikTok videos</th></tr>";
+        echo "<tr><th>Username for TikTok profile</th><th>Number of followers</th><th>Average Like count</th></tr>";
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";
             echo "<td>".$row["username"]."</td>";
-            echo "<td>".$row["averageFollowerCount"]."</td>";
+            echo "<td>".$row["followerCount"]."</td>";
+            echo "<td>".$row["AVG(UserProfile.likeNumber)"]."</td>";
             echo "</tr>";
         }
         echo "</tbody></table>";

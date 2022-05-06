@@ -217,7 +217,9 @@ DROP PROCEDURE IF EXISTS Query7 //
 
 CREATE PROCEDURE Query7()
 BEGIN
-    SELECT UserProfile.username, AVG(UserProfile.followerCount) AS 'averageFollowerCount';
+    SELECT UserProfile.username, UserProfile.followerCount, AVG(UserProfile.likeNumber)
+      FROM UserProfile
+      GROUP BY UserProfile.username;
 END; //
 
 DELIMITER ;
@@ -294,6 +296,28 @@ DELIMITER ;
 
 
 
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS TikTokProfileInfo //
+
+CREATE PROCEDURE TikTokProfileInfo(IN usernameInput VARCHAR(50))
+BEGIN
+      SELECT username, personName, followerCount, likeNumber, userBio
+      FROM UserProfile
+      WHERE usernameInput = username
+      ORDER BY username;
+END; //
+
+DELIMITER ;
+
+
+  -- username VARCHAR(255),
+  -- personName VARCHAR(255),
+  -- userBio VARCHAR(255),
+  -- verified VARCHAR(255), 
+  -- followerCount BIGINT NOT NULL,
+  -- likeNumber BIGINT NOT NULL,
+  -- PRIMARY KEY(username)
 
 
 

@@ -13,7 +13,7 @@
     if ($result = $conn->query("CALL Query8();")) {
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
-        echo "<tr><th>Popular artists on TikTok that start with letter 'A' </th></tr>";
+        echo "<tr><th>Popular artists on TikTok that start with letter 'A' </th><th>Song name </th></tr>";
         echo "</thead><tbody>";
         foreach ($result as $row) {
             echo "<tr>";
