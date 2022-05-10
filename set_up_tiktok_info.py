@@ -128,6 +128,8 @@ def set_up_revenue():
 
 def write_bios_manually():
     tiktok_artist_bios = {"@charlidamelio" : "", 
+    "@chipmunksoftiktok" , "this is bio",
+    "@charlidamelio ", 
     
     }
 
