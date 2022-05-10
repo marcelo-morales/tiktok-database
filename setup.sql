@@ -310,6 +310,51 @@ END; //
 
 DELIMITER ;
 
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS RevenueMoreThan //
+
+CREATE PROCEDURE RevenueMoreThan(IN revenueAmount BigInt)
+BEGIN
+      SELECT Song.title, Revenue.amount
+      FROM Song, Revenue
+      WHERE Song.audioId = Revenue.audioId AND Revenue.amount > revenueAmount;
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS InsertNewVideo //
+
+CREATE PROCEDURE InsertNewVideo(IN videoIdParam BigInt, IN usernameParam VARCHAR(255), IN captionParam VARCHAR(255), 
+  IN commentCountParam SMALLINT, IN likeCountParam SMALLINT
+ )
+BEGIN
+      INSERT INTO Video (videoId, username, caption, commentsCount, likeCount)
+      VALUES (videoIdParam, usernameParam, captionParam, commentCountParam, likeCountParam);
+END; //
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS InsertNewSong //
+
+CREATE PROCEDURE InsertNewSong(IN audioIdParam BigInt, IN titleParam VARCHAR(255), IN artistParam VARCHAR(255), 
+  IN amountParam SMALLINT
+ )
+BEGIN
+     INSERT INTO Song (audioId, title, artist)
+     VALUES (audioIdParam, titleParam, artistParam);
+
+
+     INSERT INTO Revenue (audioId, amount)
+     VALUES (audioIdParam, amountParam);
+
+END; //
+
+DELIMITER ;
+
+
 
   -- username VARCHAR(255),
   -- personName VARCHAR(255),

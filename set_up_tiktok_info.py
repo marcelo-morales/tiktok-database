@@ -34,7 +34,7 @@ def set_up_profiles():
 
         for row in reader:
            # username, personName, userBio, verified,  followerCount, likeNumber)
-            user = UserProfile(str('@' + row['Account']), row['Title'], 'no bio found for user' ,True, row['Subscribers count'], row['Likes avg.'])
+            user = UserProfile(str('@' + row['Account']), row['Title'], write_bios_manually(row['Account']) ,True, row['Subscribers count'], row['Likes avg.'])
             
             if (user.username in username_list):
                 continue
@@ -124,6 +124,13 @@ def set_up_revenue():
     #a song makes about $0.003 to $0.005 per stream
     #we have approximated the revenue using 
     print('revenue can be found in revenue.txt file')
+
+
+def write_bios_manually():
+    tiktok_artist_bios = {"@charlidamelio" : "", 
+    
+    }
+
 
 
 #take out folllowing count
