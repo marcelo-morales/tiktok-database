@@ -354,6 +354,77 @@ END; //
 
 DELIMITER ;
 
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query9 //
+
+CREATE PROCEDURE Query9()
+BEGIN
+
+SELECT UserProfile.userBio
+FROM UserProfile
+WHERE UserProfile.userBio LIKE '%hey%' AND UserProfile.verified LIKE '%True%'
+HAVING UserProfile.likeCount > 100000;
+
+    
+END; //
+
+DELIMITER ;
+
+
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query10 //
+
+CREATE PROCEDURE Query10()
+BEGIN
+
+SELECT UserProfile.userName
+FROM UserProfile NATURAL JOIN Video 
+WHERE LENGTH(Video.caption) < 10 AND LENGTH(UserProfile.userBio) > 20 
+GROUP BY UserProfile.userName;
+    
+END; //
+
+DELIMITER ;
+
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query11 //
+
+CREATE PROCEDURE Query11()
+BEGIN
+
+SELECT Video.videoId, Video.caption
+FROM Video
+WHERE Video.caption LIKE '%#fyp%' OR Video.caption LIKE '%#foryoupage%' OR Video.caption LIKE '%#foryou%'
+HAVING Video.likeCount > 1000000;
+    
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS Query13 //
+
+CREATE PROCEDURE Query13()
+BEGIN
+
+SELECT Album.albumName
+FROM Artist JOIN Album ON Artist.Artist = Album.artistName
+            JOIN Revenue ON Artist.audioID = Revenue.id
+WHERE Album.releaseYear = 2020
+GROUP BY Album.albumName
+ORDER BY Revenue.amount ASC;
+    
+END; //
+
+DELIMITER ;
+
+
 
 
   -- username VARCHAR(255),
