@@ -14,8 +14,8 @@ CREATE TABLE Video (
   videoId BigInt NOT NULL,
   username VARCHAR(255),
   caption VARCHAR(255),
-  commentCount SMALLINT NOT NULL,
-  likeCount SMALLINT NOT NULL,
+  commentCount BIGINT NOT NULL,
+  likeCount BIGINT NOT NULL,
   PRIMARY KEY(videoId)
 );
 
@@ -47,7 +47,7 @@ SELECT * FROM UserProfile;
 
 
 CREATE TABLE Song (
-  audioId BigInt NOT NULL,
+  audioId BIGINT NOT NULL,
   title VARCHAR(500),
   artist VARCHAR(500), 
   PRIMARY KEY(audioId)
@@ -66,7 +66,7 @@ SELECT * FROM Song;
 
 CREATE TABLE Artist (
   artistName VARCHAR(500),
-  audioId BigInt NOT NULL,
+  audioId BIGINT NOT NULL,
   PRIMARY KEY(audioId)
 );
 
@@ -391,10 +391,10 @@ BEGIN
       
   DELETE FROM Song WHERE Song.audioId=audioIdParam;
   DELETE FROM Revenue WHERE Revenue.audioId=audioIdParam;
-  
+
   SELECT Song.audioId, Song.title, Song.artist, Revenue.amount
-  FROM Song, Revenue
-  WHERE Song.audioId = Revenue.audioID;
+  FROM Song
+  JOIN Revenue ON Song.audioId = Revenue.audioId;  
 
 END; //
 

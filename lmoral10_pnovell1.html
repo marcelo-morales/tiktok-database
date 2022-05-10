@@ -54,6 +54,7 @@
 	</div>
 
 	<h2> Search Information about a TikTok Profile</h2>
+	<p>No need to place the '@' before username</p>
 
 	<form action="./php/searchTikTokProfile.php" method="post">
 		Username: <input type="text" name="item">
@@ -65,23 +66,56 @@
 
 
 	<form action="./php/songsThatMadeRevenueMoreThan.php" method="post">
-		Dollar Amount $: <input type="text" name="item">
+		Revenue Amount $: <input type="text" name="item">
 		<input type="submit">
 	</form>
 
-	<br/><br/>
 
 	<h2> Ever wanted to film a new TikTok Video? Create one right now!</h2>
 
 
-	<form action="./php/addedNewVideo.php" method="post">
-		Video Id: <input type="text" name="videoId">
-		Username: <input type="text" name="username">
-		Caption: <input type="text" name="caption">
-		Number of Comments: <input type="text" name="numComments">
-		Number of Likes: <input type="text" name="numLikes">
+	<div id="formContainer">
+		<form action="./php/addedNewVideo.php" method="post" id="formC">
+		<div class="rows">
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Video Id:
+			</label>
+			  <input name="videoId" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Username:
+			</label>
+			  <input name="username" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Caption: 
+			</label>
+			  <input name="caption" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			<label class="theLabels">
+	  
+				Number of Comments:
+		  </label>
+			<input name="numComments" class="theInputs" type="text"/>
+		</div>
+		<div class="column">
+			<label class="theLabels">
+	  
+				Number of Likes:
+		  </label>
+			<input name="numLikes" class="theInputs" type="text"/>
+		</div>
 		<input type="submit">
-	</form>
+		</form>
+		
+	</div>
 
 	<h2> Let's delete this TikTok video from our database</h2>
 
@@ -91,22 +125,56 @@
 		<input type="submit">
 	</form>
 
+	
+
 	<h2> Let's add a song that has been used in a TikTok video and add a revenue amount to the song!</h2>
-	<form action="./php/addNewSong.php" method="post">
-		Audio Id: <input type="text" name="audioId">
-		Song Title: <input type="text" name="songTitle">
-		Artist Name: <input type="text" name="artistName">
-		Revenue Amount: <input type="text" name="revenueAmount">
+
+
+	<div id="formContainer">
+		<form action="./php/addNewSong.php" method="post" id="formC">
+		<div class="rows">
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Audio Id:
+			</label>
+			  <input name="audioId" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Song Title:
+			</label>
+			  <input name="songTitle" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			  <label class="theLabels">
+		
+				Artist Name:
+			</label>
+			  <input name="artistName" class="theInputs" type="text"/>
+		  </div>
+		  <div class="column">
+			<label class="theLabels">
+	  
+				Revenue Amount $:
+		  </label>
+			<input name="revenueAmount" class="theInputs" type="text"/>
+		</div>
 		<input type="submit">
-	</form>
+		</form>
+	</div>
+
+
 
 	<h2> Wait, actually this song is not that fun, let's remove it from our database</h2>
 
-
-	<form action="./php/deleteSong.php" method="post">
-		Audio Id: <input type="text" name="audioIdDelete">
-		<input type="submit">
-	</form>
+	<div id="formContainer">
+		<form action="./php/deleteSong.php" method="post">
+			Audio Id: <input type="text" name="audioIdDelete">
+			<input type="submit">
+		</form>
+	</div>	
 
 
 
