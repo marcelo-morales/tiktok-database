@@ -34,7 +34,7 @@ def set_up_profiles():
 
         for row in reader:
            # username, personName, userBio, verified,  followerCount, likeNumber)
-            user = UserProfile(str('@' + row['Account']), row['Title'], write_bios_manually(row['Account']) ,True, row['Subscribers count'], row['Likes avg.'])
+            user = UserProfile(str('@' + row['Account']), row['Title'], write_bios_manually(str('@' + row['Account'])) ,True, row['Subscribers count'], row['Likes avg.'])
             
             if (user.username in username_list):
                 continue
@@ -126,8 +126,8 @@ def set_up_revenue():
     print('revenue can be found in revenue.txt file')
 
 
-def write_bios_manually():
-    tiktok_artist_bios = {"@charlidamelio" : "", 
+def write_bios_manually(tiktokUsername):
+    tiktok_artist_bios = { "@charlidamelio" : "No bio yet.", 
     "@chipmunksoftiktok": "this is bio",
     "@billieeilish" : "i am the greatest",
     "@badbunny" : "i am the baddest buny",
@@ -146,7 +146,7 @@ def write_bios_manually():
     "@iamferv" : "what is going on ya'll", 
     "@mercyfno" : "laugh",
     "@userbigbabywithdaoil" : "oil oil",
-    "@bellapoarch" : "i nod my head and make money"
+    "@bellapoarch" : "i nod my head and make money",
     "@jacobwitzling" : "whats up its jacob",
     "@karna.val" : "its karna yall",
     "@kimberly.loaiza" : "heyyyy",
@@ -196,9 +196,12 @@ def write_bios_manually():
     "@connordewolfe" : "yessssir",
     "@drewafualo" : "giving yall the best advice",
     "@johnnysins" : "check out my link for more"
-
     }
 
+    if tiktokUsername in tiktok_artist_bios:
+        return tiktok_artist_bios[tiktokUsername]
+    else:
+        return "This is my TikTok bio"
 
 
 #take out folllowing count

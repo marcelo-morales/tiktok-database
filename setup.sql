@@ -331,11 +331,35 @@ CREATE PROCEDURE InsertNewVideo(IN videoIdParam BigInt, IN usernameParam VARCHAR
   IN commentCountParam SMALLINT, IN likeCountParam SMALLINT
  )
 BEGIN
-      INSERT INTO Video (videoId, username, caption, commentsCount, likeCount)
+      INSERT INTO Video (videoId, username, caption, commentCount, likeCount)
       VALUES (videoIdParam, usernameParam, captionParam, commentCountParam, likeCountParam);
+
+      SELECT Video.videoId, Video.username, Video.caption, Video.commentCount, Video.likeCount
+      FROM Video;
+
 END; //
 
 DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS DeleteVideo //
+
+CREATE PROCEDURE DeleteVideo(IN videoIdParam BigInt)
+BEGIN
+      
+  DELETE FROM Video WHERE videoId=videoIdParam;
+
+  SELECT Video.videoId, Video.username, Video.caption, Video.commentCount, Video.likeCount
+  FROM Video;
+
+
+END; //
+
+
+DELIMITER ;
+
+DELIMITER //
 
 DROP PROCEDURE IF EXISTS InsertNewSong //
 
@@ -349,6 +373,28 @@ BEGIN
 
      INSERT INTO Revenue (audioId, amount)
      VALUES (audioIdParam, amountParam);
+
+     SELECT Song.audioId, Song.title, Song.artist, Revenue.amount
+     FROM Song, Revenue
+     WHERE Song.audioId = Revenue.audioID;
+
+END; //
+
+DELIMITER ;
+
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS DeleteSong //
+
+CREATE PROCEDURE DeleteSong(IN audioIdParam BigInt)
+BEGIN
+      
+  DELETE FROM Song WHERE Song.audioId=audioIdParam;
+  DELETE FROM Revenue WHERE Revenue.audioId=audioIdParam;
+  
+  SELECT Song.audioId, Song.title, Song.artist, Revenue.amount
+  FROM Song, Revenue
+  WHERE Song.audioId = Revenue.audioID;
 
 END; //
 

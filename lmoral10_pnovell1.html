@@ -75,11 +75,11 @@
 
 
 	<form action="./php/addedNewVideo.php" method="post">
-		Video Id: <input type="text" name="item">
-		Username: <input type="text" name="item">
-		Caption: <input type="text" name="item">
-		Number of Comments: <input type="text" name="item">
-		Number of Likes: <input type="text" name="item">
+		Video Id: <input type="text" name="videoId">
+		Username: <input type="text" name="username">
+		Caption: <input type="text" name="caption">
+		Number of Comments: <input type="text" name="numComments">
+		Number of Likes: <input type="text" name="numLikes">
 		<input type="submit">
 	</form>
 
@@ -87,16 +87,16 @@
 
 
 	<form action="./php/deleteVideo.php" method="post">
-		Video Id: <input type="text" name="item">
+		Video Id: <input type="text" name="videoIdDelete">
 		<input type="submit">
 	</form>
 
-	<h2> Let's add a song that has been used in a TikTok video and add a revenue amoutn to the song!</h2>
-	<form action="./php/addANewSong.php" method="post">
-		Audio Id: <input type="text" name="item">
-		Song Title: <input type="text" name="item">
-		Artist Name: <input type="text" name="item">
-		Revenue Amount: <input type="text" name="item">
+	<h2> Let's add a song that has been used in a TikTok video and add a revenue amount to the song!</h2>
+	<form action="./php/addNewSong.php" method="post">
+		Audio Id: <input type="text" name="audioId">
+		Song Title: <input type="text" name="songTitle">
+		Artist Name: <input type="text" name="artistName">
+		Revenue Amount: <input type="text" name="revenueAmount">
 		<input type="submit">
 	</form>
 
@@ -104,7 +104,7 @@
 
 
 	<form action="./php/deleteSong.php" method="post">
-		Audio Id: <input type="text" name="item">
+		Audio Id: <input type="text" name="audioIdDelete">
 		<input type="submit">
 	</form>
 
