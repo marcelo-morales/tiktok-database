@@ -1,0 +1,59 @@
+Members:
+* Marcelo Morales (lmoral10) and Peter Novello (pnovell1)
+
+Modifications: 
+* Our initial vision in Phase A consisted of exploring TikTok songs, artists, and their different revenue streams, as 
+* we are both interested in the intersection of technology and finance. Since Phase A, we have not changed our domain of interest,
+* but have shifted the types of questions and queries we made due to the availability of data. For instance, we could not gain
+* access to data that described a video's "energy score" or "danceability," so these types of question were no longer feasible to conduct during our
+* given timeframe. Instead, we adapted to these changes and focused our questions on the availability of data sets, and created
+* queries that involved connecting different relations that do not automatically share common attributes, such as album and revenue, and
+* we were able to perform some interesting queries as a result.
+
+Process:
+TikTok Videos:
+* Download TikTok Trending Videos information as a JSON from https://www.kaggle.com/datasets/erikvdven/tiktok-trending-december-2020.
+* Run python script set_up_videos() to form Video relation and output the data we want to video.txt
+
+User Profiles:
+* Download TikTok profile information as a JSON from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data.
+* In addition, we are also going to get the most popular TikTok accounts using: https://www.kaggle.com/datasets/prasertk/top-1000-tiktok-influencers-ranking ,
+* which returns a CSV
+* Run python set_up_profiles() to form UserProfile relation and output the data we want to userprofile.txt
+* In addition, for the JSON returned back from the user profiles, you have to make sure to clear out all the newline characters in users.json
+* Also, run write_bios_manually() to account for the fact that the actual user bios are not always gathered from the data source
+* which poses challenges for interesting queries related to a user's bio
+
+# Artists, Songs, and Albums
+* Download TikTok music information from https://www.kaggle.com/datasets/lykin22/tiktok-trending-data. Specifically,
+* you want to locate audd_music.csv
+* Run python set_up_music() to form Artist, Song, and ALbum relation and output the data we want to artist.txt, song.txt, and album.txt respectively.
+
+# Revenue
+* We were unable to find a dataset matching audioids to their respective revenue figures. We decided to fix this problem by estimating
+* the revenue for each song by multiplying 0.003 by the number of streams on spotify. Information about this means of estimation can be 
+* found from https://freeyourmusic.com/blog/how-much-does-spotify-pay-per-stream. The estimation for the revenue made by a song is found in revenue.txt
+
+
+
+Successes:
+* We would like to highlight the importance of our project, as this domain is inevitably engrained in the everyday lives of young adults and users of social media
+* First, we believe that our project reflects interesting queries and ideas that people often have, but cannot easily conceptualize, and we spent a significant amount of time
+* figuring out how to relate our tables together and what each aspect of the relation actually meant. So we would like to take this time to state that it was a very challenging 
+* task to determine how to actually store, represent, and use real-world data. We hope that this project can stimulate conversations with other students 
+* about the economic implications of TikTok and can even querty users whose bios use certain words and discover if they have made money from the app, for example.
+* Secondly, we believe our project employs an appropriate use of html and css skills, and graphs that strategically represent data we are trying to portray 
+* to the user. We hope that users can find our final webiste engaging and actually learn something about tiktok users, videos, and audios, and how much money is actually
+* associated with being on this platform
+
+Known Issues:
+* There are no known issues
+
+Extensions:
+* If we had more time, we would have liked to clean up the appearance of our project and make it more aesthetically appealing to users.
+* Additionally, we wish we could have performed queries about revenue related to users on tiktok who do not produce music or song audios,
+* as it would have been interesting to compare how non-artists make money compared to artists, and this could have opened a whole other avenue of questions to answer.
+* Lastly, we wish we would have had more time to involve a public health data set that could have grabbed data related to mental health illnesses during the pandemic. 
+* Due to the rise of TikTok use during the pandemic, it would have been nice to see if increasing use of TikTok was associated with mental health diagnoses,
+* as this is an unfortunate reality many have faced. We definitely want to make sure our project has an impact on users, and adding this feature
+* would have allowed for impactful queries to be performed and add more personalization to users.
