@@ -68,8 +68,6 @@ window.onload = function () {
 <?php
     include 'open.php';
 
-    echo "<h2> Artists that have most trending songs</h2><br>";
-
     if ($result = $conn->query("CALL Query3();")) {
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
