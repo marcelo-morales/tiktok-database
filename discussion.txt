@@ -21,7 +21,7 @@ User Profiles:
 * which returns a CSV
 * Run python set_up_profiles() to form UserProfile relation and output the data we want to userprofile.txt
 * In addition, for the JSON returned back from the user profiles, you have to make sure to clear out all the newline characters in users.json
-* Also, run write_bios_manually() to account for the fact that the actual user bios are not always gathered from the data source
+* Also, we added a write_bios_manually() to account for the fact that the actual user bios are not always gathered from the data source
 * which poses challenges for interesting queries related to a user's bio
 
 # Artists, Songs, and Albums
@@ -47,7 +47,7 @@ Successes:
 * associated with being on this platform
 
 Known Issues:
-* There are no known issues
+* There are no known issues.
 
 Extensions:
 * If we had more time, we would have liked to clean up the appearance of our project and make it more aesthetically appealing to users.

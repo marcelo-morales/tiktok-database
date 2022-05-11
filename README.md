@@ -23,4 +23,15 @@ To run the set up script, make you are in the most outmost directory and run
 python set_up_tiktok_info.py 
 ```
 so that your txt files can be filled with data.
-Once you are connected to the appropriate database, ensure that you run setup.sql
+Once you are connected to the appropriate database, ensure that you run setup.sql to correctly set up the database. An example of 
+running setup.sql would be
+  ```bash
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < setup.sql
+```
+
+in the dbase_setup directory. To run run the smaller version for testing purposes, a user would run
+  ```bash
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < setup-small.sql
+```
+
+
