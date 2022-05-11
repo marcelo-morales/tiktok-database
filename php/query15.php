@@ -9,7 +9,7 @@
     <?php
     include 'open.php';
 
-    echo "<h2>Information about the most lucrative TIkTok musical artist</h2><br>";
+    echo "<h2>Information about the most lucrative TikTok musical artist</h2><br>";
 
     if ($result = $conn->query("CALL Query15();")) {
         echo "<table class=\"table table-striped\">";
